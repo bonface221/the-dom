@@ -1,0 +1,148 @@
+import Callout from "../../../components/Callout";
+
+# Accessing Elements in the Dom
+
+How to access elements in the DOM ?
+
+---
+
+### Overview
+
+In our previous lesson we saw how it is easy to call out someone by their name.
+Similary we can reference elements in the DOM using some of the following methods.
+
+- `document.getElementsByClassName()`
+- `document.getElementsByTagName()`
+- `document.getElementById()`
+- `document.querySelector()`
+- `document.querySelectorAll()`
+
+<Callout>
+  <b>Note</b>:These methods allow you to find an element based on its id,
+  tagname, or classname and select it for manipulation.
+</Callout>
+
+<Callout type="info">
+  <b>Note</b>: Back to our previous example, we said the teacher will call you
+  out by your name. right? 👍😎😎 <br /> what if there are two people with the
+  same name? 🤔🤔🤔 <br />
+  how many people will follow the teacher if the teacher says john follow me to the
+  staffroom? 🤔🤔🤔 <br />
+    Bearing in mind that there are two people with the same name in the class.
+
+    both of them will follow the teacher to the staffroom. <br />
+
+</Callout>
+<Callout>
+<b>food for thought</b>: what if instead of using the name, the teacher used the <b >Admission number?</b> <br/>
+we would get only one person going to the staffroom.
+</Callout>
+
+### Explanation
+
+so we have seen if a teacher uses a generic name he/she will end up with more than one person.
+but if he/she uses a unique identifier like the admission number, he/she will get only one person.
+
+In the DOM, we can use unique indentifiers or use generic indentifiers to access elements.
+
+<Callout type='info'>
+<b>Note</b>: 
+All elements have attributes that can be used to identify them. <br/>
+e.g class,id,tagname etc
+- `document.getElementsByClassName()` returns a collection of elements with the given class name.
+- `document.getElementsByTagName()` returns a collection of elements with the given tag name. <b>#name</b>
+- `document.getElementById()` returns the element with the given id. <b>#Admission number</b>
+- `document.querySelector()` returns the first element that matches a given CSS selector. <b>#name</b>
+- `document.querySelectorAll()` returns all elements that match a given CSS selector. <b>#school</b>
+
+</Callout>
+
+e.g
+
+```js
+<div class="red-square"></div>
+
+.red-square {
+  color: crimson;
+  width: 100px;
+  height: 100px;
+}
+
+```
+
+<Callout>
+<b>NOTE</b>: You can see in the above example we have an element which is a div and it has a class or "red-square"
+A class can be in many elements and an ID can only be in one element
+
+</Callout>
+
+Using javascript you can get the element with any method you want. It all depends with what you want to do with the element.
+Commonly used one is the class and the id. <br/>
+
+### Implementation
+
+```js
+const redSquare = document.querySelector(".red-square");
+redSquare.style.backgroundColor = "limegreen";
+```
+
+<Callout>
+  <b>Result</b>: The div with the class red-square will have a background color
+  of limegreen. This is because we used JavaScript to change the color of it. So
+  let's break it down
+</Callout>
+
+```js
+"limegreen";
+```
+
+---
+
+### Explanation
+
+1. We called a method on document. document is a globally available variable in the browser that you use to interact with the HTML and CSS. It a lot of methods that you can use. In this case, we're using the querySelector in which you pass in a CSS selector and it returns to you the first one of that matches selector that it finds (if you have many of them on the page, you get just the first one.)
+   From there, we have a JavaScript pointer to the div.red-square tag stored in the redSquare variable which means we can start manipulating it.
+2. We then use the style object which represents all the CSS styles that are being applied to that object at that time.
+3. We then set the backgroundColor of that element. Notice it is backgroundColor and not background-color (camelCasing vs kebab-casing). This is how you interact with CSS via JavaScript. Anything that's kebab-cased like padding-right becomes camelCased, like paddingRight. While annoying, it'd be even more annoying if they didn't switch it since everything in JavaScript is camelCased.
+4. We then just assign that to be whatever value we want. This works with any CSS property, eg: tag.style.marginBottom = '50px'.
+
+---
+
+### Selecting Multiple Elements
+
+<Callout type='idea'>
+    <b>NB</b>: so what if we had multiple elements we wanted to modify all at once. We have the tools to do that too!
+
+</Callout>
+
+```html
+<ul>
+  <li class="js-target">Unchanged</li>
+  <li class="js-target">Unchanged</li>
+  <li>Won't Change</li>
+  <li class="js-target">Unchanged</li>
+  <li>Won't Change</li>
+  <li class="js-target">Unchanged</li>
+</ul>
+```
+
+<Callout>
+  <b>NB</b>: When we get the elements by the class we get a list of elements
+  which we can then loop over and we will get each element at each iteration
+</Callout>
+
+```js
+const elementsToChange = document.querySelectorAll(".js-target");
+for (let i = 0; i < elementsToChange.length; i++) {
+  const currentElement = elementsToChange[i];
+  currentElement.innerText = "Modified by JavaScript!";
+}
+```
+
+What do you think will be the result of the above code?😎😎
+
+Next up we will focus on events in javascript and how to handle events e.g
+
+- click events
+- mouse events
+- etc

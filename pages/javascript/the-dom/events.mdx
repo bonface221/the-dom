@@ -1,0 +1,104 @@
+import Callout from "../../../components/Callout";
+
+# Events & Event Listeners.
+
+Events are how we respond to user interaction. We can listen for events and then run code when they happen. We can listen for events on any element on the page. We can listen for events like clicks, mouse movements, key presses, and more.
+
+<Callout type='info'>
+<b>Reminder:</b> What would you do If a lion enters a room? Think of this as an event that has happened..
+Your first instinct would be to run away. This is the code that you would run when the event happens.😁😁.
+Same thing happens with code when a user does something. e.g click a button then we act on it and run some code.
+
+</Callout>
+
+---
+
+### Overview
+
+We've been able to modify HTML and CSS using JavaScript using document.
+Awesome! We're going to go one step further and start involving the user.
+Web sites are meant to be reactive to users. In order to be reactive to them,
+we need to wait for them to do stuff, like click a button or type in an input.
+The way we do that is we wait for events to happen.
+An event is created every time certain events happens like when a user clicks something or when they type something. We respond to these events by having what are called event listeners. We give an event listener a function to run whenever an event happens. Let's take a look at responding to a click when a user clicks a button.
+
+---
+
+### Adding an Event Listener
+
+We will be using this example of a button being clicked.
+
+```html
+<button id="my-button">Click Me!</button>
+```
+
+```js
+const button = document.querySelector(".my-button");
+button.addEventListener("click", function () {
+  alert("Hey there!");
+});
+```
+
+discuss what happens here...
+
+Let's break it down.
+
+- We grab the button via querySelector and store it in the JavaScript variable button.
+- We then call the addEventListener method on the button. This takes two parameters (no need to memorize this, you can always look it up): the name of the event you want respond to, which in this case is the click event, and a function that is called whenever that event happens. This function is often called a callback because it gets called back whenever the event happens.
+- We then call a function called alert. alert is a super, super annoying function that pops up a dialog window with whatever you call it with.
+- People often get confused seeing }); on the last line. The first } is closing the function, the second ) is closing the function call of addEventListener, and the ; ends the statement.
+
+---
+
+### Exercise
+
+Create an event listener that listens to a "keyup" event on the input field and shows what is typed in it beneath the input..
+
+<Callout type='error'>
+<b>events:</b> You can always look up for events in [this link](https://developer.mozilla.org/en-US/docs/Web/Events) .e.g<code>"keyup"</code> to learn more about them...
+
+</Callout>
+
+---
+
+### Event Delegation
+
+If you have a bunch of elements that you need to listen for events on, you could attach an event listener to each but that's a bit tedious to do. Instead what is sometimes easier to do is to use what's called event bubbling. When event fires on an element, after that "bubbles" up to its parent, and then its parent, and its parent, etc. until it's at the root element.
+
+<Callout>
+  <b>Boring right??</b>: You can always opt out of the event bubbling by calling{" "}
+  <code>event.stopPropagation()</code> in the event listener. This is useful if
+  you have a button inside of a div and you want to listen for clicks on the
+  button but not the div.
+</Callout>
+
+Let's take a look at an example of event bubbling.
+
+```html
+<div class="button-container">
+  <button>1</button>
+  <button>2</button>
+  <button>3</button>
+  <button>4</button>
+  <button>5</button>
+</div>
+```
+
+```js
+document
+  .querySelector(".button-container")
+  .addEventListener("click", function (event) {
+    alert(`You clicked on button ${event.target.innerText}`);
+  });
+```
+
+<Callout>
+<b>NB</b>: You can see that we only bound event listener, and that was the div above it. Then, when we click the button, we're using the event parameter that is being passed into the callback. You may be wondering where that came from. It was always there, we just ignoring it. An event listener's first parameter is always an event object.
+
+</Callout>
+<Callout type='info'>
+<b>NB</b>: There's lots of information on the event object but we're most concerned with event.target. target is the tag that the event originated from. In this case it'll be the button that caused the event. And we know that with tags you can use the innerText property to get the text inside of them. That's how we able to alert the correct number. Cool, right?
+
+</Callout>
+
+Okay nice 😁😁😁. Let's move on to Async, Await and Promises

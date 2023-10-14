@@ -1,0 +1,64 @@
+import Callout from "../../../components/Callout";
+
+# Promises
+
+Promises Explained
+
+---
+
+### Overview
+
+In our previous section we saw how to make a request to the dog API and get some data.
+
+```js
+fetch("https://dog.ceo/api/breeds/image/random")
+  .then((response) => response.json())
+  .then((data) => console.log(data));
+```
+
+We can see that we are using the `fetch` function to make a request to the dog API. The `fetch` function returns a promise. A promise is an object that represents the eventual completion (or failure) of an asynchronous operation, and its resulting value.
+
+so when we use a fetch method we get a promise... In this promise we have two methods `then` and `catch`. The `then` method is used to handle the success of the promise and the `catch` method is used to handle the failure of the promise.
+
+```js
+fetch("https://dog.ceo/api/breeds/image/random")
+  .then((response) => response.json())
+  .then((data) => console.log(data))
+  .catch((error) => console.log(error));
+```
+
+the same senario we had when we sent someone to get us some salt
+
+the first .then is used to handle a successful promise and the second .then is used to handle the data that is returned from the promise. The .catch is used to handle the error that is returned from the promise.
+the catch catches errors and we can do something with the error
+maybe notify the user or whoever made the request something has gone wrong...
+
+---
+
+### Implementation
+
+So I hope this has dimisfied the mystery of promises and how they work.
+
+---
+
+### Tradeoffs
+
+<Callout type="green">
+  <b>Hard to read</b>: Promises are hard to read and understand especially as a
+  beginner.
+</Callout>
+
+<Callout type="warning">
+  <b>Alot of code writing</b>: Promises require alot of code writing to handle
+  the success and failure of the promise.
+</Callout>
+
+### Exercise
+
+<Callout type="success">
+  <b>Exercise</b>: Make a request to the this fox api and display the image on the screen.[https://randomfox.ca/floof/](https://randomfox.ca/floof/)
+
+</Callout>
+
+do we have a nicer way to work with promises? yes we do an that't the topic for the next lecture.
+Async and Await....
