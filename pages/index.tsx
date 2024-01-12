@@ -4,9 +4,9 @@ import React from "react";
 export default function Index() {
   const router = useRouter();
 
-  React.useEffect(() => {
-    router.push("/javascript");
-  }, []);
+  // React.useEffect(() => {
+  //   router.push("/javascript");
+  // }, []);
 
   return null;
 }

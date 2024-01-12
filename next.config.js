@@ -10,13 +10,13 @@ module.exports = withNextra({
   experiments: {
     esmExternals: true,
   },
-  async redirects() {
-    return [
-      {
-        source: "/",
-        destination: "/javascript",
-        permanent: true,
-      },
-    ];
-  },
+  // async redirects() {
+  //   return [
+  //     {
+  //       source: "/",
+  //       destination: "/javascript",
+  //       permanent: true,
+  //     },
+  //   ];
+  // },
 });

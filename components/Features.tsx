@@ -2,6 +2,8 @@ import {
   LightningBoltIcon,
   PuzzleIcon,
   CogIcon,
+  DeviceMobileIcon,
+  UserGroupIcon,
 } from "@heroicons/react/outline";
 
 const features = [
@@ -9,25 +11,38 @@ const features = [
     name: " The DOM",
     icon: PuzzleIcon,
   },
+
   {
-    name: " Events",
-    icon: CogIcon,
-  },
-  {
-    name: " Async & Await",
-    icon: CogIcon,
-  },
-  {
-    name: " Exercises",
+    name: " Asynchronous & Promises",
     icon: LightningBoltIcon,
   },
 ];
+const features2 = [
+  {
+    name: " A Career in Android Development",
+    icon: DeviceMobileIcon,
+  },
 
-function Features() {
+  {
+    name: " Opportunities",
+    icon: LightningBoltIcon,
+  },
+  {
+    name: " Building Connections",
+    icon: UserGroupIcon,
+  },
+];
+
+interface FeatureProps {
+  type?: "javascript" | "android";
+}
+
+function Features({ type = "javascript" }: FeatureProps) {
+  const arr = type === "javascript" ? features : features2;
   return (
     <>
       <div className="grid grid-cols-1 gap-3 my-12">
-        {features.map(({ icon: Icon, ...feature }, i) => (
+        {arr.map(({ icon: Icon, ...feature }, i) => (
           <div
             className="flex items-center space-x-4"
             key={feature.name.split(" ").join("-")}
